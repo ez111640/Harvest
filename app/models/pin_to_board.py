@@ -4,9 +4,23 @@ from flask_login import UserMixin
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
-pins_to_boards = db.Table(
-    "pins-to-boards",
-    db.Model.metadata,
-    db.Column("pin_id", db.Integer, db.ForeignKey("pins.id")),
-    db.Column("board_id", db.Integer, db.ForeignKey("boards.id"))
+class Pins_To_Boards (db.Model, UserMixin):
+    __tablename__ = 'pins_to_boards'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    pinId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("pins.id")))
+    boardId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("boards.id"))
 )
+
+    pins = db.relationship("Pin", back_populates="pins_to_boards")
+    boards = db.relationship("Board", back_populates="pins_to_boards")
+
+def to_dict(self):
+        return {
+            'id': self.id,
+            'pinId': self.userId,
+            'boardId': self.name
+        }

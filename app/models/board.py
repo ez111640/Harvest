@@ -2,7 +2,6 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from .pin_to_board import pins_to_boards
 
 
 class Board(db.Model, UserMixin):
@@ -16,12 +15,7 @@ class Board(db.Model, UserMixin):
     name = db.Column(db.String(40), nullable=False)
 
     users = db.relationship("User", back_populates="boards")
-    board_pins=db.relationship(
-        "Pin",
-        secondary=pins_to_boards,
-        back_populates="pin_boards"
-    )
-
+    pins_to_boards = db.relationship("Pins_To_Boards", back_populates="boards")
 
     def to_dict(self):
         return {

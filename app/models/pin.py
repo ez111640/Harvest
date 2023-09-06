@@ -2,7 +2,6 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from .pin_to_board import pins_to_boards
 
 
 
@@ -13,25 +12,21 @@ class Pin(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    boardId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("boards.id")))
     url = db.Column(db.String(40), nullable=False)
     link = db.Column(db.String())
     description = db.Column(db.String(255), nullable=False)
     title = db.Column(db.String(40), nullable=False)
+    userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
 
-    boards = db.relationship("Board", back_populates="pins")
-    pin_boards= db.relationship(
-        "Board",
-        secondary=pins_to_boards,
-        back_populates="board_pins"
-    )
-
+    users = db.relationship("User", back_populates="pins")
+    pins_to_boards = db.relationship("Pins_To_Boards", back_populates="pins")
+    comments = db.relationship("Comment", back_populates="pins")
 
     def to_dict(self):
         return {
             'id': self.id,
-            'boardId': self.boardId,
             'url': self.url,
             'description': self.description,
-            'title': self.title
+            'title': self.title,
+            'userId': self.userId
         }

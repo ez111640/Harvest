@@ -1,5 +1,5 @@
 from app.models import db, User
-from ..models.db import SCHEMA
+from ..models.db import SCHEMA, environment
 
 
 # Adds a demo user, you can add other users here if you want
@@ -28,5 +28,9 @@ def seed_users():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_users():
-    db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM users")
+
     db.session.commit()

@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import environment, SCHEMA, add_prefix_for_prod
 from flask_sqlalchemy import SQLAlchemy
 
 import os

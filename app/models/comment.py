@@ -12,7 +12,7 @@ class Comment(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
-    pinId = db.Column(db.String(40), db.ForeignKey(add_prefix_for_prod("pin.id")), nullable=False)
+    pinId = db.Column(db.String(40), db.ForeignKey(add_prefix_for_prod("pins.id")), nullable=False)
     commentText = db.Column(db.String(255), nullable=False)
 
     pins = db.relationship("Pin", back_populates="comments")

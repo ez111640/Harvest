@@ -38,7 +38,7 @@ def upgrade():
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=True),
-    sa.Column('pinId', sa.String(length=40), nullable=False),
+    sa.Column('pinId', sa.Integer(), nullable=False),
     sa.Column('commentText', sa.String(length=255), nullable=False),
     sa.ForeignKeyConstraint(['pinId'], ['pins.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),

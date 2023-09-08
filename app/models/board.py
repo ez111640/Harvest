@@ -12,7 +12,7 @@ class Board(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(), nullable=False)
 
     users = db.relationship("User", back_populates="boards")
     pins_to_boards = db.relationship("Pins_To_Boards", back_populates="boards")

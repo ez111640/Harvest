@@ -47,7 +47,7 @@ def upgrade():
     op.create_table('boards',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=True),
-    sa.Column('name', sa.String(length=40), nullable=False),
+    sa.Column('name', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -65,10 +65,10 @@ def upgrade():
         op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
     op.create_table('pins',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('url', sa.String(length=40), nullable=False),
+    sa.Column('url', sa.String(), nullable=False),
     sa.Column('link', sa.String(), nullable=True),
-    sa.Column('description', sa.String(length=255), nullable=False),
-    sa.Column('title', sa.String(length=40), nullable=False),
+    sa.Column('description', sa.String(), nullable=False),
+    sa.Column('title', sa.String(), nullable=False),
     sa.Column('creatorId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['creatorId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -79,7 +79,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=True),
     sa.Column('pinId', sa.Integer(), nullable=False),
-    sa.Column('commentText', sa.String(length=255), nullable=False),
+    sa.Column('commentText', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['pinId'], ['pins.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

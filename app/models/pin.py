@@ -12,10 +12,10 @@ class Pin(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String(40), nullable=False)
+    url = db.Column(db.String(), nullable=False)
     link = db.Column(db.String())
-    description = db.Column(db.String(255), nullable=False)
-    title = db.Column(db.String(40), nullable=False)
+    description = db.Column(db.String(), nullable=False)
+    title = db.Column(db.String(), nullable=False)
     creatorId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
 
     users = db.relationship("User", back_populates="pins")

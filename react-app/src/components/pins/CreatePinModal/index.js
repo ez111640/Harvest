@@ -15,9 +15,10 @@ function CreatePinModal() {
 	const { closeModal } = useModal();
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const data = await dispatch(addPinThunk({url, link, description, title}));
+		const data = await dispatch(addPinThunk({ url, link, description, title }));
 		if (data) {
 			setErrors(data);
+			console.log(errors)
 		} else {
 			closeModal();
 		}
@@ -31,7 +32,7 @@ function CreatePinModal() {
 					<input
 						type="text"
 						value={title}
-						onChange={(e)=>setTitle(e.target.value)}
+						onChange={(e) => setTitle(e.target.value)}
 						required
 					/>
 				</label>
@@ -40,7 +41,7 @@ function CreatePinModal() {
 					<input
 						type="text"
 						value={url}
-						onChange={(e)=>setUrl(e.target.value)}
+						onChange={(e) => setUrl(e.target.value)}
 						required
 					/>
 				</label>
@@ -49,7 +50,7 @@ function CreatePinModal() {
 					<input
 						type="text"
 						value={link}
-						onChange={(e)=>setLink(e.target.value)}
+						onChange={(e) => setLink(e.target.value)}
 						required
 					/>
 				</label>
@@ -58,7 +59,7 @@ function CreatePinModal() {
 					<input
 						type="description"
 						value={description}
-						onChange={(e)=>setDescription(e.target.value)}
+						onChange={(e) => setDescription(e.target.value)}
 						required
 					/>
 				</label>

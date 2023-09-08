@@ -6,7 +6,6 @@ import { getAllPins } from "../../../store/pinsReducer";
 import { Link } from 'react-router-dom'
 import CreatePinModal from "../../pins/CreatePinModal"
 import "./UserBoards.css"
-import { useModal } from "../../../context/modal";
 import OpenModalButton from "../../OpenModalButton";
 
 

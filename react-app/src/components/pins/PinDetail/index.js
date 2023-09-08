@@ -9,7 +9,7 @@ export const PinDetail = () => {
 	const dispatch = useDispatch()
 	const allPinArray = Object.values(allPins)
 	const pinId = useParams().pinId
-	const thisPin = allPinArray.find((pin) => pin.id == pinId)
+	const thisPin = allPinArray.find((pin) => pin.id === pinId)
 	let domain;
 
 	if (thisPin) {
@@ -25,10 +25,10 @@ export const PinDetail = () => {
 	}, [dispatch])
 
 	if (!allPinArray.length) return null
-	if(!thisPin) return null
+	if (!thisPin) return null
 	return (
 		<div id="pin-detail-container">
-			<div id="pin-detail-left"><img src={thisPin?.url}></img></div>
+			<div id="pin-detail-left"><img alt="pin" src={thisPin?.url}></img></div>
 			<div id="pin-detail-right">
 				<div></div>
 				<div className="pin-details pin-detail-title">{thisPin.title}</div>

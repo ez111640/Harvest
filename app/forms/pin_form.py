@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, URLField
+from wtforms import StringField
 from wtforms.validators import DataRequired
 from app.models import Pin
 
 class PinForm(FlaskForm):
-    url=URLField('name', validators=[DataRequired()])
-    link=URLField('link', validator=[DataRequired()])
+    url=StringField('name', validators=[DataRequired()])
+    link=StringField('link', validators=[DataRequired()])
     description=StringField('description')
     title=StringField('title')

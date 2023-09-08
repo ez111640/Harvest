@@ -42,7 +42,7 @@ export const getBoardDetails = (board) => async (dispatch) => {
 const initialState = {
 };
 export const boardsReducer = (state = initialState, action) => {
-    let newState = { ...state }
+    // let newState = { ...state }
     switch (action.type) {
         case LOAD_BOARDS:
             return { ...state, ...action.boards  }

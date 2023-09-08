@@ -19,7 +19,7 @@ export const LandingPage = () => {
     return (
         <div id="all-pins">
             {allPinArray.map((pin) => (
-                <div>
+                <div id={pin.id}>
                     <PinCard pin={pin} />
                 </div>
             ))}

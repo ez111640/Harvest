@@ -21,7 +21,6 @@ const [onModalClose, setOnModalClose] = useState(null)
     const contextValue = {
         modalRef,
         modalContent,
-        onModalClose,
         setModalContent,
         setOnModalClose,
         closeModal,

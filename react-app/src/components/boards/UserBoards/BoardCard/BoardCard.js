@@ -14,19 +14,19 @@ export const BoardCard = ({ boardId }) => {
         dispatch(getAllPins())
         dispatch(getUserBoards())
         dispatch(getBoardPins(boardId))
-    }, [dispatch])
+    }, [dispatch, boardId])
 
     if (!boardPins) return null
     if (!boards) return null
     const boardPinArray = Object.values(boardPins)
     const boardArray = Object.values(boards)
 
-    const board = boardArray.find((board) => board.id == board.id)
-    console.log(board)
+    const thisBoard = boardArray.find((board) => board.id === boardId)
+    console.log(thisBoard)
     return (
         <div>
             <div className="board-cover-photo-div">
-                <img className="board-cover-photo" src={boardPinArray[boardPinArray.length - 1].url}></img>
+                <img alt="board" className="board-cover-photo" src={boardPinArray[boardPinArray.length - 1].url}></img>
             </div>
 
         </div>

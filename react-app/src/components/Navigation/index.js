@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Redirect, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useState } from "react";
+import { NavLink, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 
 function Navigation({ isLoaded }) {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const sessionUser = useSelector((state) => state.session.user);
   const [searchInput, setSearchInput] = useState("")
   const history = useHistory()
-  let searchProducts = []
+  // let searchProducts = []
 
 
 
@@ -48,9 +48,8 @@ function Navigation({ isLoaded }) {
         <button className="hide-that-button" onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
       </div>
       <div>
-        {sessionUser &&
           <ProfileButton className="nav-link profile-button" user={sessionUser} />
-        }
+
 
       </div>
     </div>

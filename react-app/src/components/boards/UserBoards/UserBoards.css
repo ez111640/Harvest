@@ -1,4 +1,4 @@
-.user-board-listing{
+.user-board-listing {
     display: flex;
     flex-direction: row;
     column-gap: 30px;
@@ -7,8 +7,29 @@
     margin-right: auto;
 }
 
-.board-name{
+.board-name {
     font-size: 18px;
     display: flex;
     justify-content: center;
+}
+
+.profile-header {
+    display: flex;
+    background-color: #D9C4B7;
+    height: 200px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.user-spot{
+    height: 150px;
+    width: 150px;
+    background-color: whitesmoke;
+    border-radius: 80px;
+}
+.profile-div-left {
+    display: grid;
+    
 }

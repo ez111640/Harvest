@@ -7,7 +7,7 @@ export const PinCard = (pin) => {
     return (
         <div className="pin-photo">
             <NavLink to={`/pins/${thisPin.id}`}>
-                <img src={thisPin.url}></img>
+                <img alt="pin" src={thisPin.url}></img>
             </NavLink>
         </div>
     )

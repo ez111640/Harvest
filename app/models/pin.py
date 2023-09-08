@@ -16,7 +16,7 @@ class Pin(db.Model, UserMixin):
     link = db.Column(db.String())
     description = db.Column(db.String(255), nullable=False)
     title = db.Column(db.String(40), nullable=False)
-    userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    creatorId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
 
     users = db.relationship("User", back_populates="pins")
     pins_to_boards = db.relationship("Pins_To_Boards", back_populates="pins")
@@ -28,5 +28,6 @@ class Pin(db.Model, UserMixin):
             'url': self.url,
             'description': self.description,
             'title': self.title,
-            'userId': self.userId
+            'userId': self.creatorId,
+            'link': self.link
         }

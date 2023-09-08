@@ -15,12 +15,16 @@ class Pins_To_Boards (db.Model, UserMixin):
     boardId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("boards.id"))
 )
 
-    pins = db.relationship("Pin", back_populates="pins_to_boards")
+    pins = db.relationship("Pin", back_populates="pins_to_boards", cascade="all, delete", lazy="joined")
     boards = db.relationship("Board", back_populates="pins_to_boards")
 
-def to_dict(self):
-        return {
-            'id': self.id,
-            'pinId': self.userId,
-            'boardId': self.name
-        }
+
+    def to_dict(self):
+            return {
+                'id': self.id,
+                'pinId': self.pinId,
+                'boardId': self.boardId,
+                'pin': {
+                     'url': self.pins.url
+                }
+            }

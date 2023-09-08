@@ -1,0 +1,25 @@
+.board-cover-photo{
+    width: 250px;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.board-cover-photo-div{
+    height: 200px;
+    width: 250px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-name{
+    background-color: white;
+}

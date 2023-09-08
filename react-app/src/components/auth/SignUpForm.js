@@ -9,6 +9,10 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [city, setCity] = useState('')
+  const [state, setState] = useState('')
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -37,6 +41,22 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value)
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value)
+  }
+
+  const updateCity = (e) => {
+    setCity(e.target.value)
+  }
+
+  const updateState = (e) => {
+    setState(e.target.value)
+  }
 
   if (user) {
     return <Redirect to='/' />;
@@ -84,6 +104,42 @@ const SignUpForm = () => {
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
+        ></input>
+      </div>
+      <div>
+        <label>First Name</label>
+        <input
+          type='text'
+          name='firstName'
+          onChange={updateFirstName}
+          value={firstName}
+        ></input>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type='text'
+          name='lastName'
+          onChange={updateLastName}
+          value={lastName}
+        ></input>
+      </div>
+      <div>
+        <label>City</label>
+        <input
+          type='text'
+          name='city'
+          onChange={updateCity}
+          value={city}
+        ></input>
+      </div>
+      <div>
+        <label>State</label>
+        <input
+          type='text'
+          name='state'
+          onChange={updateState}
+          value={state}
         ></input>
       </div>
       <button type='submit'>Sign Up</button>
